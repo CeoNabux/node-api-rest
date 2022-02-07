@@ -1,0 +1,23 @@
+API RESTFUL
+
+REST: RepresentationalState Tranfer
+
+con esto utilizamos metodo
+GET: traemos data
+POST: Se crea la informacion
+PUT: Nos permite editar
+DELETE: eliminamos
+
+
+METHOD      /products         /products/{id}
+GET           ok                  no
+POST          ok                  ok
+PUT           no                  ok
+DELETE        no                  ok
+
+
+Esto que hemos trabajado se toma a partir de params
+
+pero cuando la aplicacion empieza a crecer debemos trabajr con querys que hacen de filtros
+en los querys podemos hacer filtros que nos permitan por ejemplo paginar
+trabajar con brands, locations
