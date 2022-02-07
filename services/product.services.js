@@ -3,7 +3,7 @@ const faker = require('faker');
 class ProductsServices {
   constructor() {
     this.products = [];
-    this.generate()
+    this.generate();
   }
 
   generate() {
@@ -21,27 +21,44 @@ class ProductsServices {
   create(productData) {
     const newProduct = {
       id: faker.datatype.uuid(),
-      ...productData
-    }
-    this.products.push(newProduct)
-    return newProduct
+      ...productData,
+    };
+    this.products.push(newProduct);
+    return newProduct;
   }
 
   find() {
-    return this.products
+    return this.products;
   }
 
   findOne(id) {
-    return this.products.find(item => item.id === id)
+    return this.products.find((item) => item.id === id);
   }
 
-  update() {}
+  update(id, changes) {
+    const index = this.products.findIndex((item) => item.id === id);
+    if (index === -1) {
+      throw new Error('product not found');
+    }
+    const product = this.products[index]
+    this.products[index] = {
+      ...product,
+      ...changes
+    };
+    return this.products[index];
+  }
 
-  delete() {}
+  delete(id) {
+    const index = this.products.findIndex((item) => item.id === id);
+    if (index === -1) {
+      throw new Error('Product not found');
+    }
+    this.products.splice(index, 1);
+    return { id };
+  }
 }
 
 module.exports = ProductsServices;
-
 
 // Hi I'm Luis and I love to help people to find their hidden potential
 
