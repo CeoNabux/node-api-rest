@@ -1,6 +1,6 @@
 const express = require('express');
 const routerApi = require('./routes/index')
-const { logErrors, errorHandler } = require('./middlewares/error.handler')
+const { logErrors, errorHandler, boomErrorHandler } = require('./middlewares/error.handler')
 
 
 const app = express()
@@ -27,6 +27,7 @@ routerApi(app)
 // and the secuence has to be according what the middleware method next
 // was created
 app.use(logErrors)
+app.use(boomErrorHandler)
 app.use(errorHandler)
 
 
