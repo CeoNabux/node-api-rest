@@ -21,3 +21,12 @@ Esto que hemos trabajado se toma a partir de params
 pero cuando la aplicacion empieza a crecer debemos trabajr con querys que hacen de filtros
 en los querys podemos hacer filtros que nos permitan por ejemplo paginar
 trabajar con brands, locations
+
+
+SINGLE RESPONSABILITY PRINCIPLE
+Esto se trabajo es de mantener el principio de responsabilidad unica
+
+no solo es aplicado a los metodos, sino tambien a los archivos que tiene el proyecto
+
+un ejemplo claro de esto es el router del proyecto
+
