@@ -30,3 +30,15 @@ no solo es aplicado a los metodos, sino tambien a los archivos que tiene el proy
 
 un ejemplo claro de esto es el router del proyecto
 
+MIDDLEWARES
+
+Estan en medio de in de nuestro req y nuestro reponse
+pueden ponerse mas de un middleware y que trabajen de forma secuencial
+hasta verificar que los permisos o logica lo necesiten
+
+
+* Funciona como pipes
+* Validar datos
+* Capturar errores
+* Validar permisos
+* Controlar accesos
