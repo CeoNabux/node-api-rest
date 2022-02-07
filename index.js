@@ -1,5 +1,7 @@
 const express = require('express');
 const routerApi = require('./routes/index')
+const { logErrors, errorHandler } = require('./middlewares/error.handler')
+
 
 const app = express()
 const port = 5000;
@@ -19,6 +21,13 @@ app.get('/nueva-ruta', (req, res) => {
 
 
 routerApi(app)
+
+
+// THE MIDDLEWARES have to be called after the routing
+// and the secuence has to be according what the middleware method next
+// was created
+app.use(logErrors)
+app.use(errorHandler)
 
 
 app.listen(port, () => {
