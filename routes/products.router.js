@@ -2,6 +2,10 @@ const express = require('express');
 
 const ProductsServices = require('../services/product.services');
 
+const validatorHandler = require('../middlewares/validator.handler')
+
+const { createProductSchema, updateProductSchema, getProductSchema } = require('../schemas/product.schema')
+
 const router = express.Router();
 
 const service = new ProductsServices();
@@ -15,15 +19,19 @@ router.get('/filter', async (req, res) => {
   res.send('yo soy un filtro');
 });
 
-router.get('/:id', async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    const product = await service.findOne(id);
-    res.json(product);
-  } catch (error) {
-    next(error)
+router.get('/:id',
+  validatorHandler(getProductSchema, 'params'),
+
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const product = await service.findOne(id);
+      res.json(product);
+    } catch (error) {
+      next(error)
+    }
   }
-});
+);
 
 // filter has been taken as an id
 //that makes out previous api crash with no data
